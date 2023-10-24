@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.html">Voltar</a>
+    
+    <br><br>
+
+    <input>
+        <h1 class="text-3xl font-bold">Cadastro de Pessoas</h1>
+        
+        <br>
+        
+        <div>
+            <label>Nome:</label>
+            <input type="nome" placeholder="Insira seu nome">
+        </div>
+
+        <div>
+            <label>Senha:</label>
+    
+            <input type="password" name="password" placeholder="Insira sua senha">
+        </div>
+        <br>
+        <label>Gênero</label>
+
+        <div>
+            <input type="radio" name="genero" id="feminino" value="feminino">
+            <label for="feminino">Feminino</label>
+        </div>
+        <div>
+            <input type="radio" name="genero" id="masculino" value="masculino">
+            <label for="masculino">Masculino</label>
+        </div>
+        <div>
+            <input type="radio" name="genero" id="naobinarie" value="naobinarie">
+            <label for="naobinarie">N/B</label>
+        </div>
+        <div>
+            <input type="radio" name="genero" id="semresposta" value="semresposta">
+            <label for="semresposta">Prefiro não responder</label>
+        </div>
+
+        <br><br>
+
+        <div>
+            <input type="checkbox" name="notificacao[0]" id="email">
+            <label for="email">E-Mail</label>
+        </div>
+        <div>
+            <input type="checkbox" name="notificacao[1]" id="whatsapp">
+            <label for="whatsapp">Whats App</label>
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="uf">Estado</label>
+            <select class="" name="estado" id="uf">
+                <option value="0">Selecione:</option>
+                <option value="1">Minas Gerais</option>
+                <option value="2">São Paulo</option>
+                <option value="3">Rio de Janeiro</option>
+                <option value="4">Espírito Santo</option>
+                <option value="5">Bahia</option>
+            </select>
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="perfil">Cor padrão do perfil</label>
+            <input type="color">
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" name="nascimento" id="nascimento">
+        </div>
+
+        <br><br>
+        <div class="space-x-4">
+            <input type="submit" value="Cadastrar">
+                <!-- <button>Cadastrar</button> -->
+            <button> Voltar </button>
+            <button> Limpar </button>
+        </div>
+    </div>
+</body>
+</html>
