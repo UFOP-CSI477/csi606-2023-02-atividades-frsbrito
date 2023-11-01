@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+    font-family: "Times New Roman", Times, serif;
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form_content > div {
+    margin: 15px 0;
+}
+
+.form_content > div > label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.form_content > div > input {
+    padding: 5px;
+    border: 2px solid #333;
+    background-color: #222;
+    color: #ccc;
+}
+
+.checkbox_form_content_label {
+    margin: 5px 0;
+    color: #ccc;
+}
