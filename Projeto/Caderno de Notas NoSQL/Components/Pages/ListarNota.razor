@@ -1,0 +1,37 @@
+﻿@page "/nota/{notaId}"
+@using Caderno_de_Notas_NoSQL.Controllers
+@using Caderno_de_Notas_NoSQL.Models
+@using Caderno_de_Notas_NoSQL.Repository
+@using Microsoft.AspNetCore.Components.Web
+@inject INotasAPIController _NotasAPIController
+
+<a class="back-link" href="/">←Voltar para todas notas</a>
+
+<div class="nota">
+    @if (nota is null)
+    {
+        <h1>Nota não encontrada!</h1>
+    }
+    else
+    {
+        <ul class="nota-list">
+            <li class="nota-list-item">
+                <a href="nota/@nota.Id">
+                    <NotaCard Nota="@nota" />
+                </a>
+            </li>
+        </ul>
+    }
+</div>
+
+@code {
+    Nota? nota;
+
+    [Parameter, EditorRequired]
+    public string NotaId { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        nota = await _NotasAPIController.Get(NotaId);
+    }
+}

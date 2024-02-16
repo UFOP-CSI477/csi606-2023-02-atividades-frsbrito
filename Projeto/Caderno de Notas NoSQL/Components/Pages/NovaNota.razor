@@ -1,0 +1,49 @@
+﻿@page "/novanota"
+@using Caderno_de_Notas_NoSQL.Controllers
+@using Caderno_de_Notas_NoSQL.Models
+@using Caderno_de_Notas_NoSQL.Repository
+@using Caderno_de_Notas_NoSQL.Components
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager Nav
+@inject INotasAPIController _NotasAPIController
+@attribute [StreamRendering]
+
+@* <form class="buscar" data-enhance>
+    <input name="query" placeholder="Buscar..." value="@Query" />
+    <button title="Busca"><img src="/images/busca.png"/></button>
+</form> *@
+
+<div>
+    <h1>Editor de Notas</h1>
+    <EditForm Model="@nota" OnValidSubmit="HandleValidSubmit" @ref="@editForm" FormName="nota-editor">
+        <div class="nota-card">
+            <div class="nota-card-body">
+                <div>
+                    <label for="nome">Título da Nota:</label>
+                    <InputText id="nome" @bind-Value="nota.Nome" class="input-custom"/>
+                </div>
+                <div>
+                    <label for="anotacoes">Anotações:</label>
+                    <InputTextArea id="anotacoes" @bind-Value="nota.Anotacoes" rows="5" class="textarea-custom" />
+                </div>
+                <button type="submit">Salvar Nota</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    EditForm? editForm;
+
+    // [SupplyParameterFromQuery]
+    // public string? Query { get; set; }
+
+    [SupplyParameterFromForm]
+    private Nota nota { get; set; } = new Nota { Nome = "Título", Anotacoes = "Anotações" };
+
+    private async Task HandleValidSubmit()
+    {
+        nota = await _NotasAPIController.Create(nota);
+        Nav.NavigateTo($"nota/{nota.Id}");
+    }
+}

@@ -1,0 +1,42 @@
+﻿@page "/"
+@using Caderno_de_Notas_NoSQL.Models
+@using Caderno_de_Notas_NoSQL.Repository
+@using Caderno_de_Notas_NoSQL.Controllers
+@inject INotasAPIController _NotasAPIController
+@attribute [StreamRendering]
+
+@* <form class="buscar" data-enhance>
+    <input name="query" placeholder="Buscar..." value="@Query" />
+    <button title="Busca"><img src="/images/busca.png"/></button>
+</form> *@
+
+@if (notas is null || notas.Count() == 0)
+{
+    <div class="nota-list">
+        <h1>Ainda Não Há Nenhuma Nota Cadastrada</h1>
+    </div>
+}
+else
+{
+    <ul class="nota-list">
+        @foreach (var nota in notas)
+        {
+            <li class="nota-list-item">
+                <a href="nota/@nota.Id">
+                    <NotaCard nota="nota" />
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    // [SupplyParameterFromQuery]
+    // public string? Query { get; set; }
+    IEnumerable<Nota>? notas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        notas = await _NotasAPIController.GetAll();
+    }
+}

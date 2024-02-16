@@ -1,0 +1,25 @@
+﻿@using Caderno_de_Notas_NoSQL.Controllers
+@using Caderno_de_Notas_NoSQL.Models
+@inject NavigationManager Nav
+@inject INotasAPIController _NotasAPIController
+
+<div class="nota-card">
+    @if (nota is null)
+    {
+        <h1>Fim.</h1>
+    }
+    else{
+        <div class="nota-card-body">
+            <h2 class="nota-card-name">@nota.Nome</h2>
+            <h3 class="nota-card-descricao">@nota.Anotacoes</h3>
+            <a type="button" class="btn-delete" href="/deletado/@nota.Id">Excluir Nota</a>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string NotaId { get; set; }
+    [Parameter]
+    public Nota nota { get; set; } = new Nota();
+}

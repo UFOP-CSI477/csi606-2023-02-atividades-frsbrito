@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caderno de Notas NoSQL", "Caderno de Notas NoSQL.csproj", "{1EDD04D3-BE32-4161-9C92-CFCBE42FCE8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EDD04D3-BE32-4161-9C92-CFCBE42FCE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EDD04D3-BE32-4161-9C92-CFCBE42FCE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EDD04D3-BE32-4161-9C92-CFCBE42FCE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EDD04D3-BE32-4161-9C92-CFCBE42FCE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC4D71D7-699E-41E9-A372-832AA179F2F2}
+	EndGlobalSection
+EndGlobal
