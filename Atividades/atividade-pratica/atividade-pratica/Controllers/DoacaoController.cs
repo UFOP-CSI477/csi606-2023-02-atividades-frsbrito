@@ -19,6 +19,20 @@ namespace atividade_pratica.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<Doacao>>> GetAll()
+        {
+            var listDoacao = await _doacaoService.Get();
+            if (listDoacao == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(listDoacao);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Doacao>>> Get(int? Id, string? Nome)
         {
             var listDoacao = await _doacaoService.Get(Id);

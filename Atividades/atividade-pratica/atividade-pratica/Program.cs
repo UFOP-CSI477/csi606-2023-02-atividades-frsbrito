@@ -4,6 +4,7 @@ using atividade_pratica.Services;
 using atividade_pratica.Entities;
 using atividade_pratica.Components;
 using Microsoft.EntityFrameworkCore;
+using atividade_pratica.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ builder.Services.AddScoped<BaseRepository<LocalColeta>>();
 builder.Services.AddScoped<LocalColetaService>();
 builder.Services.AddScoped<BaseRepository<TipoSanguineo>>();
 builder.Services.AddScoped<TipoSanguineoService>();
+
+
+builder.Services.AddScoped<HttpClient>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -59,8 +63,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(atividade_pratica.Client._Imports).Assembly);
+    .AddInteractiveWebAssemblyRenderMode();
 
 app.MapControllers();
 app.Run();
