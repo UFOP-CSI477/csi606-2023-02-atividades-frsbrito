@@ -1,0 +1,84 @@
+﻿@page "/"
+@using atividade_pratica.Entities
+@using atividade_pratica.Services
+@using atividade_pratica.Controllers
+@inject DoacaoService DoacaoService
+@inject LocalColetaService LocalColetaService
+@inject PessoaService PessoaService
+@inject TipoSanguineoService TipoSanguineoService
+
+<h3>Informações Cadastradas no Sistemas:</h3>
+
+@if (!HasData)
+{
+    <div class="nota-list">
+        <h1>Nenhuma entidade cadastrada.</h1>
+    </div>
+}
+else
+{
+    <div class="nota-list">
+        @if (pessoas.Any())
+        {
+            <p>Pessoas cadastradas:</p>
+            <ul>
+                @foreach (var pessoa in pessoas)
+                {
+                    <li class ="nota-list-item">Nome: @pessoa.Nome, Rua: @pessoa.Rua, Número: @pessoa.Numero, Complemento: @pessoa.Complemento, RG: @pessoa.RG</li>
+                }
+            </ul>
+        }
+
+        @if (doacoes.Any())
+        {
+            <p>Doações cadastradas:</p>
+            <ul>
+                @foreach (var doacao in doacoes)
+                {
+                    <li class="nota-list-item">PessoaID: @doacao.PessoaId, LocalID: @doacao.LocalId, Data: @doacao.Data</li>
+                }
+            </ul>
+        }
+
+        @if (localcoletas.Any())
+        {
+            <p>Locais de Coleta cadastrados:</p>
+            <ul>
+                @foreach (var localcoleta in localcoletas)
+                {
+                    <li class="nota-list-item">Nome: @localcoleta.Nome, Rua: @localcoleta.Rua, Numero: @localcoleta.Numero, Complemento: @localcoleta.Complemento</li>
+                }
+            </ul>
+        }
+
+        @if (tiposanguineos.Any())
+        {
+            <p>Tipos Sanguineos cadastrados:</p>
+            <ul>
+                @foreach (var tiposanguineo in tiposanguineos)
+                {
+                    <li class="nota-list-item">Tipo: @tiposanguineo.Tipo, Fator: @tiposanguineo.Fator</li>
+                }
+            </ul>
+        }
+    </div>
+}
+
+@code {
+    // IEnumerable<Estado> estados = new List<Estado>();
+    // IEnumerable<Cidade> cidades = new List<Cidade>();
+    IEnumerable<LocalColeta> localcoletas = new List<LocalColeta>();
+    IEnumerable<Doacao> doacoes = new List<Doacao>();
+    IEnumerable<TipoSanguineo> tiposanguineos = new List<TipoSanguineo>();
+    IEnumerable<Pessoa> pessoas = new List<Pessoa>();
+
+    bool HasData => /* estados.Any() || cidades.Any() ||  */localcoletas.Any() || doacoes.Any() || tiposanguineos.Any() || pessoas.Any();
+
+    protected override async Task OnInitializedAsync()
+    {
+        doacoes = await DoacaoService.Get();
+        localcoletas = await LocalColetaService.Get();
+        tiposanguineos = await TipoSanguineoService.Get();
+        pessoas = await PessoaService.Get();
+    }
+}
