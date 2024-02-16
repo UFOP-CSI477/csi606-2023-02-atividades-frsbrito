@@ -37,12 +37,12 @@ namespace Caderno_de_Notas_NoSQL.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<bool> Update(string id, Nota Nota)
+        public async Task<Nota> Update(string id, Nota Nota)
         {
             var existingNotas = await _NotasRepository.Get(id);
 
             if (existingNotas == null)
-                return false;
+                return null;
 
             Nota.Id = existingNotas.Id;
 
@@ -51,7 +51,7 @@ namespace Caderno_de_Notas_NoSQL.Controllers
             if (!result)
                 throw new Exception("Error ao atualizar as notas");
 
-            return true;
+            return Nota;
         }
 
         [HttpDelete("{id}")]

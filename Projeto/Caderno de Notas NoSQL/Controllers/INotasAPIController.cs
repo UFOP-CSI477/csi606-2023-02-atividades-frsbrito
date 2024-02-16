@@ -8,7 +8,7 @@ namespace Caderno_de_Notas_NoSQL.Controllers
         Task<Nota> Get(string id);
         Task<IEnumerable<Nota>> GetAll();
         Task<Nota> Create(Nota Nota);
-        Task<bool> Update(string id, Nota Nota);
+        Task<Nota> Update(string id, Nota Nota);
 
         Task<bool> Delete(string id);
     }

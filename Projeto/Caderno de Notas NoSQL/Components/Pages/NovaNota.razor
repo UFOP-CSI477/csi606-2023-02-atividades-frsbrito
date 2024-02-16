@@ -8,10 +8,7 @@
 @inject INotasAPIController _NotasAPIController
 @attribute [StreamRendering]
 
-@* <form class="buscar" data-enhance>
-    <input name="query" placeholder="Buscar..." value="@Query" />
-    <button title="Busca"><img src="/images/busca.png"/></button>
-</form> *@
+<a class="back-link" href="/">←Voltar para todas notas</a>
 
 <div>
     <h1>Editor de Notas</h1>
@@ -34,9 +31,6 @@
 
 @code {
     EditForm? editForm;
-
-    // [SupplyParameterFromQuery]
-    // public string? Query { get; set; }
 
     [SupplyParameterFromForm]
     private Nota nota { get; set; } = new Nota { Nome = "Título", Anotacoes = "Anotações" };

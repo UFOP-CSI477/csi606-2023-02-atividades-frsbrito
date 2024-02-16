@@ -4,17 +4,11 @@
 @inject INotasAPIController _NotasAPIController
 @attribute [StreamRendering]
 
-@* <form class="buscar" data-enhance>
-    <input name="query" placeholder="Buscar..." value="@Query" />
-    <button title="Busca"><img src="/images/busca.png"/></button>
-</form> *@
 <a class="back-link" href="/">←Voltar para todas notas</a>
 
 <h1>Deletado!</h1>
 
 @code {
-    // [SupplyParameterFromQuery]
-    // public string? Query { get; set; }
 
     [Parameter, EditorRequired]
     public string NotaId { get; set; } = default!;

@@ -1,0 +1,59 @@
+﻿@page "/editar/{notaId}"
+@using Caderno_de_Notas_NoSQL.Controllers
+@using Caderno_de_Notas_NoSQL.Models
+@using Microsoft.AspNetCore.Components.Forms
+@inject INotasAPIController _NotasAPIController
+@attribute [StreamRendering]
+@inject NavigationManager Nav
+
+<a class="back-link" href="/">←Voltar para todas notas</a>
+
+<div>
+    @if (nota is null)
+    {
+        <h1>Nota não encontrada!</h1>
+    }
+    else
+    {
+        <h1>Editor de Notas</h1>
+        <EditForm Model="@nota" OnValidSubmit="HandleValidSubmit" @ref="@editForm" FormName="nota-editor">
+            <div class="nota-card">
+                <div class="nota-card-body">
+                    <div>
+                        <label for="nome">Título da Nota:</label>
+                        <InputText id="nome" @bind-Value="nota.Nome" class="input-custom" />
+                    </div>
+                    <div>
+                        <label for="anotacoes">Anotações:</label>
+                        <InputTextArea id="anotacoes" @bind-Value="nota.Anotacoes" rows="5" class="textarea-custom" />
+                    </div>
+                    <button type="submit">Salvar Nota</button>
+                </div>
+            </div>
+        </EditForm>
+    }
+</div>
+
+@code {
+    EditForm? editForm;
+    Nota? nota;
+
+    [Parameter, EditorRequired]
+    public string NotaId { get; set; } = default!;
+
+    [SupplyParameterFromForm]
+    private Nota notaEditada { get; set; } = default!;
+    // private Nota notaEditada { get; set; } = new Nota { Nome = "Título", Anotacoes = "Anotações" };
+
+    protected override async Task OnInitializedAsync()
+    {
+        nota = await _NotasAPIController.Get(NotaId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        notaEditada = nota;
+        nota = await _NotasAPIController.Update(NotaId, notaEditada);
+        Nav.NavigateTo($"nota/{NotaId}");
+    }
+}
