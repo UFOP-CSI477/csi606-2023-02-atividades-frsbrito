@@ -101,7 +101,7 @@ namespace Caderno_de_Notas_NoSQL.Repository
                 var updateDefinition =
                     Builders<Nota>.Update
                         .Set(t => t.Nome, value.Nome)
-                        .Set(t => t.Nome, value.Anotacoes)
+                        .Set(t => t.Anotacoes, value.Anotacoes)
                         .Set(t => t.LastModifiedUtc, DateTime.UtcNow);
 
                 var updateResult =  
