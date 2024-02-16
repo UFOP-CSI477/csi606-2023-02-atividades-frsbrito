@@ -23,3 +23,13 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+/.vs
+/Atividades/atividade-pratica/.vs
+/Atividades/atividade-pratica/atividade-pratica/bin/Debug/net8.0
+/Atividades/atividade-pratica/atividade-pratica/obj
+/Atividades/atividade-pratica/atividade-pratica.Client/bin
+/Atividades/atividade-pratica/atividade-pratica.Client/obj
+/Atividades/atividade-pratica/Domain/obj
+/Atividades/atividade-pratica/Domain
+/Atividades/Infra/obj
+/Atividades/Infra
